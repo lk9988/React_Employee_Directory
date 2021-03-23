@@ -1,12 +1,15 @@
 import DataTable from "../DataTable";
 import SearchForm from "../SearchForm";
 
-function Main({ users }) {
+function Main({ users, searchState, handleInputChange }) {
 	return (
 		<>
-			<SearchForm />
-			<DataTable></DataTable>
-			<div className="card">
+			<SearchForm
+				searchState={searchState}
+				handleInputChange={handleInputChange}
+			/>
+			<DataTable users={users}></DataTable>
+			{/* <div className="card">
 				<img src="..." className="card-img-top" alt="..." />
 				<div className="card-body">
 					{users.map((user) => (
@@ -16,7 +19,7 @@ function Main({ users }) {
 						</p>
 					))}
 				</div>
-			</div>
+			</div> */}
 		</>
 	);
 }

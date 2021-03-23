@@ -1,4 +1,4 @@
-function DataTable() {
+function DataTable({ users }) {
 	return (
 		<div className="datatable">
 			<table className="table table-hover">
@@ -12,23 +12,31 @@ function DataTable() {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td colspan="2">Larry the Bird</td>
-						<td>@twitter</td>
-					</tr>
+					{users.length > 0 ? (
+						users.map((user, i) => {
+							return (
+								<tr>
+									<th scope="row"> {i + 1} </th>
+									<td>
+										<img src={user.picture.thumbnail} />
+									</td>
+									<td>
+										{user.name.first} {user.name.last}
+									</td>
+									<td>{user.email}</td>
+									<td>{user.phone}</td>
+								</tr>
+							);
+						})
+					) : (
+						<tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+							<td>dfgdfgdg</td>
+						</tr>
+					)}
 				</tbody>
 			</table>
 		</div>
